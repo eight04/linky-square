@@ -6,7 +6,9 @@ This script was created a long time ago. I rewrote it for better readability.
 
 Install
 -------
+Check the [demo][1] page.
 
+[1]: https://rawgit.com/eight04/Linky-Square/master/demo.html
 
 Usage
 -----
