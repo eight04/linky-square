@@ -1,0 +1,28 @@
+.linky .linky-anchor-box {
+	background: yellow;
+}
+.linky-select-box {
+	border: 2px dashed red; 
+	box-sizing: border-box;
+	position: absolute; 
+	z-index: 65534;
+	display: none;
+}
+.linky-info-box {
+	color: black;
+	border: 1px solid grey;
+	background: white;
+	position: absolute;
+	z-index: 65534;
+	display: none;
+	padding: 0.3em 0.6em;
+}
+.linky body {
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	pointer-events: none;
+}
+.linky .linky-info-box,
+.linky .linky-select-box {
+	display: block;
+}
