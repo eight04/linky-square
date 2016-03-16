@@ -8,6 +8,11 @@ Install
 -------
 [Greasy Fork](https://greasyfork.org/scripts/18006-linky-square)
 
+Similar addons
+--------------
+* [Snap Links Plus](https://addons.mozilla.org/zh-tw/firefox/addon/snaplinksplus/)
+* [Linky](https://addons.mozilla.org/zh-TW/firefox/addon/linky/)
+
 Changelog
 ---------
 * 0.1.0 (March 16, 2016)
