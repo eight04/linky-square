@@ -1,10 +1,14 @@
 Linky Square
 ============
-An userscript which let you drag a square to open/copy links.
+An userscript which allows you to drag a square to open/copy links.
 
 Check the [demo](https://rawgit.com/eight04/Linky-Square/master/demo.html) page.
 
-Todos
------
-* Clean up old code.
-* Support Chrome.
+Install
+-------
+[Greasy Fork](https://greasyfork.org/scripts/18006-linky-square)
+
+Changelog
+---------
+* 0.1.0 (March 16, 2016)
+	- First release.
