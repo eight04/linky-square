@@ -14,6 +14,21 @@
 // ==/UserScript==
 
 function createLinky(o){
+	var delay = function(){
+		function wrap(target) {
+			if (!target.delay) {
+				return;
+			}
+			target();
+			target.delay = false;
+		}
+		
+		return function(target) {
+			target.delay = true;
+			setTimeout(wrap, 0, target);
+		};
+	}();
+	
 	var tracker = function(o){
 		var ox = 0, oy = 0, x = 0, y = 0,
 			traceStart = false,
@@ -126,7 +141,7 @@ function createLinky(o){
 
 		function update(){
 			updateSelectBox();
-			updateLinkList();
+			delay(updateLinkList);
 			updateInfoBox();
 		}
 
