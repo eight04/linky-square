@@ -145,11 +145,11 @@ function createLinky(o){
 				if (traceStart) {
 					return;
 				}
-				traceStart = true;
-				
 				if (!o.keyConfig.regular(e)) {
 					return;
 				}
+				traceStart = true;
+				
 				on();
 				// call it directly will cause firefox to stop srcolling. why?
 				setTimeout(ui.on);
@@ -227,9 +227,9 @@ function handler(e, links) {
 	if (e.type == "mouseup") {
 		openLinks(links);
 	} else if (e.type == "keydown") {
-		if (e.key == "Escape") {
+		if (e.code == "Escape") {
 			return;
-		} else if (e.key == "c") {
+		} else if (e.code == "KeyC") {
 			if (links.length) {
 				GM_setClipboard(links.join("\n"));
 			}
@@ -242,14 +242,14 @@ var keyConfig = {
 		return e.altKey && !e.ctrlKey && !e.shiftKey && e.button == 0;
 	},
 	esc: function(e) {
-		return e.key == "Escape";
+		return e.code == "Escape";
 	},
 	copy: function(e) {
-		return e.key == "c";
+		return e.code == "KeyC";
 	}
 };
 
-window.addEventListener("mousedown", function init(e){	
+window.addEventListener("mousedown", function init(e){
 	if (keyConfig.regular(e)) {
 		window.removeEventListener("mousedown", init);
 		createLinky({
