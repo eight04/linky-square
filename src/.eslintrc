@@ -2,15 +2,11 @@
 	"extends": "eslint:recommended",
 	"env": {
 		"browser": true,
-		"es6": true
+		"es6": true,
+		"greasemonkey": true
 	},
 	"globals": {
-		"unsafeWindow": false,
-		"GM_config": false,
-		"GM_addStyle": false,
-		"GM_registerMenuCommand": false,
-		"GM_info": false,
-		"TLDS": false
+		"REPLACE": false
 	},
 	"rules": {
 		"eqeqeq": 0,
