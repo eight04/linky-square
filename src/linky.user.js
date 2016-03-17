@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Linky Square
 // @author 		eight <eight04@gmail.com>
-// @version     0.1.1
+// @version     0.1.2
 // @namespace   eight04.blogspot.com
 // @description Grab links by dragging a square.
 // @include     http*

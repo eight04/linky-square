@@ -15,7 +15,9 @@ Similar addons
 
 Changelog
 ---------
-* 0.1.1 (Match 16, 2016)
+* 0.1.2 (Mar 17, 2016)
+	- Improve `delay` function.
+* 0.1.1 (Mar 16, 2016)
 	- Improve `updateLinkList` performance.
-* 0.1.0 (March 16, 2016)
+* 0.1.0 (Mar 16, 2016)
 	- First release.
