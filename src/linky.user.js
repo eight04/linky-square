@@ -16,16 +16,15 @@
 function createLinky(o){
 	var delay = function(){
 		function wrap(target) {
-			if (!target.delay) {
-				return;
-			}
 			target();
 			target.delay = false;
 		}
 		
 		return function(target) {
-			target.delay = true;
-			setTimeout(wrap, 0, target);
+			if (!target.delay) {
+				target.delay = true;
+				setTimeout(wrap, 0, target);
+			}
 		};
 	}();
 	
