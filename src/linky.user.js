@@ -11,6 +11,7 @@
 // @compatible  firefox
 // @compatible  chrome
 // @compatible  opera
+// @require https://greasyfork.org/scripts/7212-gm-config-eight-s-version/code/GM_config%20(eight's%20version).js?version=156587
 // ==/UserScript==
 
 function createLinky(o){
@@ -159,7 +160,7 @@ function createLinky(o){
 				if (traceStart) {
 					return;
 				}
-				if (!o.keyConfig.regular(e)) {
+				if (!o.config.key.regular(e)) {
 					return;
 				}
 				traceStart = true;
@@ -186,7 +187,7 @@ function createLinky(o){
 			} else if (e.type == "mouseup" || e.type == "keydown") {
 				if (
 					!traceStart ||
-					e.type == "keydown" && !o.keyConfig.copy(e) && !o.keyConfig.esc(e)
+					e.type == "keydown" && !o.config.key.copy(e) && !o.config.key.esc(e)
 				) {
 					return;
 				}
@@ -237,39 +238,85 @@ function openLinks(links) {
 	}
 }
 
+// do object property check
+function objectProperties(a, b) {
+	var key;
+	for (key in b) {
+		if (a[key] != b[key]) return false;
+	}
+	return true;
+}
+
+function createConfig() {
+	var config = {key: {
+		regular: function(e) {
+			return objectProperties(e, config.keyRegular);
+		},
+		copy: function(e) {
+			return objectProperties(e, config.keyCopy);
+		},
+		cancel: function(e) {
+			return objectProperties(e, config.keyCancel);
+		}
+	}};
+	GM_config.setup({
+		behavior: {
+			label: "Default action after selecting"
+			type: "select",
+			default: "open",
+			options: {
+				open: "Open links in new tab",
+				copy: "Copy URLs"
+			}
+		},
+		keyRegular: {
+			label: "Event to start selection",
+			type: "textarea",
+			default: JSON.stringify({altKey: true, ctrlKey: false, shiftKey: false, button: 0})
+		},
+		keyCopy: {
+			label: "Event to copy url",
+			type: "textarea",
+			default: JSON.stringify({code: "KeyC"})
+		},
+		keyCancel: {
+			label: "Event to cancel selection",
+			type: "textarea",
+			default: JSON.stringify({code: "Escape"})
+		}
+	}, function(o) {
+		Object.assign(config, o);
+		for (var key in o) {
+			if (!key.startsWith("key")) {
+				continue;
+			}
+			try {
+				config[key] = JSON.parse(o[key]);
+			} catch (err) {
+				alert("Failed to create key config! Is your config broken?");
+			}
+		}
+	});
+	return config;
+}
+
+var config = createConfig();
+
 function handler(e, links) {
 	if (e.type == "mouseup") {
 		openLinks(links);
-	} else if (e.type == "keydown") {
-		if (e.code == "Escape") {
-			return;
-		} else if (e.code == "KeyC") {
-			if (links.length) {
-				GM_setClipboard(links.join("\n"));
-			}
-		}
+	} else if (config.key.copy(e) && links.length) {
+		GM_setClipboard(links.join("\n"));
 	}
 }
 
-var keyConfig = {
-	regular: function(e){
-		return e.altKey && !e.ctrlKey && !e.shiftKey && e.button == 0;
-	},
-	esc: function(e) {
-		return e.code == "Escape";
-	},
-	copy: function(e) {
-		return e.code == "KeyC";
-	}
-};
-
 window.addEventListener("mousedown", function init(e){
-	if (keyConfig.regular(e)) {
+	if (config.key.regular(e)) {
 		window.removeEventListener("mousedown", init);
 		createLinky({
 			callback: handler,
 			initEvent: e,
-			keyConfig: keyConfig
+			config: config
 		});
 	}
 });
