@@ -1,13 +1,17 @@
+/* global GM_config */
 // ==UserScript==
 // @name        Linky Square
 // @author 		eight <eight04@gmail.com>
 // @version     0.1.2
 // @namespace   eight04.blogspot.com
 // @description Grab links by dragging a square.
-// @include     http*
+// @include     *
 // @grant       GM_openInTab
 // @grant       GM_setClipboard
 // @grant       GM_addStyle
+// @grant       GM_setValue
+// @grant       GM_getValue
+// @grant       GM_registerMenuCommand
 // @compatible  firefox
 // @compatible  chrome
 // @compatible  opera
@@ -242,7 +246,7 @@ function openLinks(links) {
 function objectProperties(a, b) {
 	var key;
 	for (key in b) {
-		if (a[key] != b[key]) return false;
+		if (a[key] !== b[key]) return false;
 	}
 	return true;
 }
@@ -261,7 +265,7 @@ function createConfig() {
 	}};
 	GM_config.setup({
 		behavior: {
-			label: "Default action after selecting"
+			label: "Default action after selecting",
 			type: "select",
 			default: "open",
 			options: {
@@ -284,7 +288,8 @@ function createConfig() {
 			type: "textarea",
 			default: JSON.stringify({code: "Escape"})
 		}
-	}, function(o) {
+	}, function() {
+		var o = GM_config.get();
 		Object.assign(config, o);
 		for (var key in o) {
 			if (!key.startsWith("key")) {
@@ -300,13 +305,18 @@ function createConfig() {
 	return config;
 }
 
+function copyLinks(links) {
+	if (!links.length) return;
+	GM_setClipboard(links.join("\n"));
+}
+
 var config = createConfig();
 
 function handler(e, links) {
-	if (e.type == "mouseup") {
+	if (e.type == "mouseup" && config.behavior == "open") {
 		openLinks(links);
-	} else if (config.key.copy(e) && links.length) {
-		GM_setClipboard(links.join("\n"));
+	} else if (e.type == "mouseup" || config.key.copy(e)) {
+		copyLinks(links);
 	}
 }
 
