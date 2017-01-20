@@ -15,6 +15,10 @@ Similar addons
 
 Changelog
 ---------
+* 0.2.0 (Jan 21, 2017)
+	- Move to inline-js, drop Grunt.
+	- Runs on any protocols. [#2](https://github.com/eight04/linky-square/issues/2)
+	- Add configure. [#1](https://github.com/eight04/linky-square/issues/1)
 * 0.1.2 (Mar 17, 2016)
 	- Improve `delay` function.
 * 0.1.1 (Mar 16, 2016)
