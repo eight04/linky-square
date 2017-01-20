@@ -1,6 +1,6 @@
 {
   "name": "linky-square",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "An userscript which let you drag a square to open/copy links",
   "keywords": [
     "userscript"
@@ -13,10 +13,11 @@
   "license": "MIT",
   "author": "eight <eight04@gmail.com>",
   "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-contrib-cssmin": "^0.10.0",
-    "grunt-contrib-watch": "^0.6.1",
-    "grunt-eslint": "^18.0.0",
-    "grunt-replace": "^0.8.0"
+    "inline-js": "^0.1.0",
+    "npm-build-tools": "^2.2.5"
+  },
+  "scripts": {
+    "test": "eslint **/*.js",
+    "build": "inlinejs src/linky.user.js -o dist/linky.user.js"
   }
 }
