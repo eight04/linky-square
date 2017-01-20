@@ -18,6 +18,9 @@
   },
   "scripts": {
     "test": "eslint **/*.js",
-    "build": "inlinejs src/linky.user.js -o dist/linky.user.js"
+    "build": "inlinejs src/linky.user.js -o dist/linky.user.js",
+    "preversion": "npm test",
+    "version": "npm run build && git add .",
+    "postversion": "git push --follow-tags"
   }
 }
