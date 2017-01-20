@@ -1,6 +1,6 @@
 {
   "name": "linky-square",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "An userscript which let you drag a square to open/copy links",
   "keywords": [
     "userscript"
