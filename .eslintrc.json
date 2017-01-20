@@ -1,0 +1,15 @@
+{
+	"extends": "eslint:recommended",
+	"env": {
+		"browser": true,
+		"es6": true,
+		"greasemonkey": true
+	},
+	"globals": {
+		"$inline": false,
+		"GM_config": false
+	},
+	"rules": {
+		"no-use-before-define": [2, "nofunc"]
+	}
+}
