@@ -1,4 +1,3 @@
-/* global GM_config */
 // ==UserScript==
 // @name        Linky Square
 // @author 		eight <eight04@gmail.com>
@@ -40,7 +39,7 @@ function createLinky(o){
 			enable = false;
 
 		var ui = function(){
-			GM_addStyle(".linky .linky-anchor-box{background:#ff0}.linky-select-box{border:2px dashed red;box-sizing:border-box;position:absolute;z-index:65534;display:none}.linky-info-box{color:#000;border:1px solid grey;background:#fff;position:absolute;z-index:65534;display:none;padding:.3em .6em}.linky body{-moz-user-select:none;-webkit-user-select:none;pointer-events:none}.linky .linky-info-box,.linky .linky-select-box{display:block}");
+			GM_addStyle(".linky-info-box,.linky-select-box{position:absolute;z-index:65534;display:none}.linky .linky-anchor-box{background:#ff0}.linky-select-box{border:2px dashed red;box-sizing:border-box}.linky-info-box{color:#000;border:1px solid grey;background:#fff;padding:.3em .6em}.linky body{-moz-user-select:none;-webkit-user-select:none;pointer-events:none}.linky .linky-info-box,.linky .linky-select-box{display:block}");
 
 			var selectBox = document.createElement("div");
 			selectBox.className = "linky-select-box";

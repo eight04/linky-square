@@ -1,8 +1,7 @@
-/* global GM_config */
 // ==UserScript==
 // @name        Linky Square
 // @author 		eight <eight04@gmail.com>
-// @version     0.1.2
+// @version     $inline("../package.json|eval:$.version")
 // @namespace   eight04.blogspot.com
 // @description Grab links by dragging a square.
 // @include     *
@@ -40,7 +39,7 @@ function createLinky(o){
 			enable = false;
 
 		var ui = function(){
-			GM_addStyle(REPLACE.CSS);
+			GM_addStyle($inline("./style.css|cssmin|stringify"));
 
 			var selectBox = document.createElement("div");
 			selectBox.className = "linky-select-box";
