@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Linky Square
 // @author 		eight <eight04@gmail.com>
-// @version     $inline("../package.json|eval:$.version")
+// @version     $inline("../package.json|parse:version")
 // @namespace   eight04.blogspot.com
 // @description Grab links by dragging a square.
 // @include     *
@@ -190,7 +190,7 @@ function createLinky(o){
 			} else if (e.type == "mouseup" || e.type == "keydown") {
 				if (
 					!traceStart ||
-					e.type == "keydown" && !o.config.key.copy(e) && !o.config.key.esc(e)
+					e.type == "keydown" && !o.config.key.copy(e) && !o.config.key.cancel(e)
 				) {
 					return;
 				}

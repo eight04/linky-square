@@ -1,6 +1,9 @@
 .linky .linky-anchor-box {
 	background: yellow;
 }
+.linky .linky-anchor-box img {
+	filter: url($inline("filter.svg|dataurl:image/svg+xml")#filter);
+}
 .linky-select-box {
 	border: 2px dashed red; 
 	box-sizing: border-box;
