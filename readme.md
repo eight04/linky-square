@@ -15,6 +15,9 @@ Similar addons
 
 Changelog
 ---------
+* 0.2.1 (Feb 1, 2017)
+	- Fix: selection can't be canceled.
+	- Add style to images inside the selected links. [#3](https://github.com/eight04/linky-square/issues/3)
 * 0.2.0 (Jan 21, 2017)
 	- Move to inline-js, drop Grunt.
 	- Runs on any protocols. [#2](https://github.com/eight04/linky-square/issues/2)
